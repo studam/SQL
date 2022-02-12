@@ -1,0 +1,125 @@
+CREATE TABLE departments (
+   dept_no VARCHAR(30) NOT NULL, 
+   dept_name VARCHAR(30) NOT NULL,
+PRIMARY KEY (dept_no)
+);
+
+CREATE TABLE employees (
+    emp_no INT NOT NULL,
+    employee_title Varchar(30) NOT NULL,
+    birth_date DATE NOT NULL,
+    first_name VARCHAR(30) NOT NULL,
+    last_name VARCHAR(30) NOT NULL,
+    sex VARCHAR(6) NOT NULL,
+    hire_date DATE NOT NULL,
+PRIMARY KEY (emp_no),
+FOREIGN KEY (employee_title) REFERENCES titles (title_id)
+);
+
+CREATE TABLE dept_emp (
+    emp_no INT FK >- employees.emp_no NOT NULL, 
+    dept_no VARCHAR(10) FK >- departments.dept_no NOT NULL,
+    from_date DATE NOT NULL,
+    to_date DATE NOT NULL
+);
+
+CREATE TABLE dept_managers (
+   dept_no VARCHAR(10) FK >- departments.dept_no NOT NULL,
+   emp_no INT FK >- employees.emp_no NOT NULL,
+   from_date DATE NOT NULL,
+   to_date DATE NOT NULL
+);
+
+CREATE TABLE salaries (
+   emp_no INT FK >- employees.emp_no NOT NULL,
+   salary BIGINT NOT NULL,
+   from_date DATE NOT NULL, 
+   to_date DATE NOT NULL
+);
+
+CREATE TABLE titles (
+   title_id VARCHAR(30) NOT NULL,
+   title VARCHAR(30) NOT NULL,
+PRIMARY KEY (title_id)
+);
+
+
+
+
+
+question 1 
+
+SELECT Employees.emp_no, Employees.last_name, Employees.first_name, Employees.sex,
+Salaries.salary
+FROM Employees
+INNER JOIN Salaries ON
+Employees.emp_no = Salaries.emp_no;
+
+question 2 
+
+SELECT emp_no, first_name, last_name, hire_date from Employees
+WHERE hire_date >= '1986-01-01'
+AND hire_date < '1986-12-31';
+
+question 3 
+
+SELECT Dept_Manager.dept_no, 
+	   Departments.dept_name,
+	   Dept_Manager.emp_no,
+	   Employees.last_name,
+	   Employees.first_name
+FROM Dept_Manager
+INNER JOIN Departments ON
+Dept_Manager.dept_no = Departments.dept_no
+INNER JOIN Employees ON
+Dept_Manager.emp_no = Employees.emp_no;
+
+question 4
+
+SELECT Employees.emp_no, 
+	   Employees.last_name, 
+	   Employees.first_name,
+	   Departments.dept_name
+FROM Employees
+INNER JOIN Dept_Manager ON
+Employees.emp_no = Dept_Manager.emp_no
+INNER JOIN Departments ON
+Dept_Manager.dept_no = Departments.dept_no;
+
+question 5
+
+SELECT * FROM Employees
+WHERE first_name = 'Hercules'
+AND last_name LIKE 'B%';
+
+
+question 6 
+
+SELECT e.emp_no, e.last_name, e.first_name, d.dept_name
+FROM Employees AS e
+JOIN Dept_Emp ON
+e.emp_no = Dept_Emp.emp_no
+INNER JOIN Departments AS d ON
+Dept_Emp.dept_no = d.dept_no
+WHERE dept_name = 'Sales';
+
+question 7 
+
+SELECT e.emp_no, e.last_name, e.first_name, d.dept_name
+FROM Employees AS e
+JOIN Dept_Emp ON
+e.emp_no = Dept_Emp.emp_no
+INNER JOIN Departments AS d ON
+Dept_Emp.dept_no = d.dept_no
+WHERE dept_name = 'Sales' OR 
+	  dept_name = 'Development';
+
+question 8 
+
+SELECT last_name, COUNT(last_name) FROM Employees
+GROUP BY last_name
+ORDER BY count(last_name) desc;
+
+
+
+
