@@ -1,31 +1,24 @@
 # SQL-challenge
 
 
-What is SQLite and why use it?
-SQLite is a dialect for using an SQL database. The syntax is very similar to the PostgreSQL syntax, with the main difference between the two being that SQLite is entirely serverless. SQLite allows for the power of database storage but with a tiny footprint. SQLite is also conveniently part of the standard Python library, so no additional setup is needed to get it up and running.
-SQLite is not comparable with PostgreSQL or any other SQL language, rather it focuses on providing local data storage for individual applications.
+What is SQL?
+SQL stands for Structured Query Language. It is the language we most often use to interact with databases. SQL is incredibly effective at manipulating data, and is one of the easier langauges to learn !
 
-What does ORM mean?
-ORM stands for Object-Relational Mapper. Object-relational mapping allows us to write SQL queries using the object-oriented paradigm of the language with which you prefer to work. In other words, for our purposes in class, it allows us to interact with our database using Python.
+What is PostreSQL?
+PostgreSQL is a flexible open-source object relational database. and a database management system. It utilizes SQL as its primary language, and hence the name.
 
-How are classes relevant?
-Python is an "Object-Oriented Programming (OOP) language", which means that it is highly concerned with organization and reusability. Classes are crucial to OOP in that they allow us to group related things and keep them together.
-A class is essentially a template that allows us to create objects, which have variables and behaviors associated with them. It helps streamline our code and create efficiencies whenever something needs to be used various times.
-
+What is a Relational Database?
+A relational database is best described as a digital representation of a relational model of data i.e. how information is linked together.
+The database stores the organized table into tables (or relations). In the table, you can find different columns corresponding to the fields (attribute) of data, and rows corresponding to the different records (tuples).
 
 
 Objectives:
 
-Connect to a SQL database using SQLAlchemy.
-Perform basic SQL queries using engine.execute().
-Create Python classes and objects.
-Create, read, update, and delete data from a SQL database using SQLAlchemy's ORM.
-Reflect existing databases.
-Use the SQLAlchemy ORM to create classes that model tables.
-Use the ORM define relationships and foreign key constraints.
-Use joins to query related data.
-Use Flask to create and run a server.
-Define endpoints using Flask's @app.route decorator.
-Extract query variable path values from GET requests.
-Use variable paths to execute database queries on behalf of the client.
-Return JSONified query results from API endpoints.
+Create a localhost connection to a PostgreSQL server and have successfully connect to it.
+Create, use, and populate a SQL database with data.
+Create, populate, and select data from a SQL table.
+Import large CSV datasets into pgAdmin.
+Use pgAdmin to select specific rows/columns of data out from a table.
+Understand the different kinds of joins and how to use them to create new tables in pgAdmin.
+Solidify the foundations of writing basic- to intermediate-level SQL statements.
+Develop an introductory understanding of table design and database management.
